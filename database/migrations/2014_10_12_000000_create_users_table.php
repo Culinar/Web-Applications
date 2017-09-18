@@ -17,21 +17,25 @@ class CreateUsersTable extends Migration
         nullable();
       */
         Schema::create('USERS', function (Blueprint $table) {
-            $table->increments('ID');
+            $table->string('USER_ID')->primary();
 
             //foreign
-            $table->integer('ADMIN_ID');
+            $table->string('ADMIN_ID');
 
-            $table->string('EMAIL_CUST')->unique();
+            //content
+            $table->string('EMAIL_CUST', 150);
             $table->string('PASSWD_CUST');
-            $table->string('NAME_CUST');
-            $table->string('GENDER_CUST');
-            $table->string('ADDRESS_CUST');
-            $table->string('ADDRESS_TAG_CUST');
-            $table->string('PHONENUMB_CUST');
-            $table->string('IMAGE_CUST');
+            $table->string('NAME_CUST', 150);
+            $table->enum('GENDER_CUST', ['PRIA', 'WANITA']);
+            $table->string('ADDRESS_CUST', 200);
+            $table->string('ADDRESS_TAG_CUST', 30);
+            $table->string('PHONENUMB_CUST', 15);
+            $table->string('IMAGE_CUST')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            //constraint
+            $table->foreign('ADMIN_ID')->references('ADMIN_ID')->on('ADMINS');
 
             /*
               PIC = ADMIN

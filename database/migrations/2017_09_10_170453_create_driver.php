@@ -13,24 +13,27 @@ class CreateDriver extends Migration
      */
     public function up()
     {
-        Schema::create('DRIVER', function (Blueprint $table) {
-            $table->increments('ID');
+        Schema::create('DRIVERS', function (Blueprint $table) {
+            $table->string('DRIVER_ID')->primary();
 
             //foreign
-            $table->integer('ADMIN_ID');
+            $table->string('ADMIN_ID');
 
             //content
-            $table->string('ID_CARD_NUMBER');
-            $table->string('EMAIL_DRIVER');
+            $table->string('ID_CARD_NUMBER', 50);
+            $table->string('EMAIL_DRIVER', 150);
             $table->string('PASSWD_DRIVER');
-            $table->string('NAME_DRIVER');
-            $table->boolean('GENDER_DRIVER');
-            $table->string('ADDRESS_DRIVER');
-            $table->string('VECHILE_NUMBER');
-            $table->string('PHONENUMB_DRIVER');
+            $table->string('NAME_DRIVER', 150);
+            $table->enum('GENDER_DRIVER', ['PRIA', 'WANITA']);
+            $table->string('ADDRESS_DRIVER', 200);
+            $table->string('VECHILE_NUMBER', 10);
+            $table->string('PHONENUMB_DRIVER', 15);
+            $table->string('IMAGE_DRIVER')->nullable();
             $table->rememberToken();
             $table->timestamps();
 
+            //constraint
+            $table->foreign('ADMIN_ID')->references('ADMIN_ID')->on('ADMINS');
             /*
               PIC = ADMIN
             */

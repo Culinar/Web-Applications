@@ -13,15 +13,16 @@ class CreateCategoryMenu extends Migration
      */
     public function up()
     {
-        Schema::create('CATEGORYMENU', function (Blueprint $table) {
-            $table->increments('ID');
+        Schema::create('CATEGORYMENUS', function (Blueprint $table) {
+            $table->string('CATEGORY_ID')->primary();
 
             //foreign
-            $table->integer('CURTNER_ID');
+            $table->string('CURTNER_ID');
 
-            $table->string('CATEGORY_MENU');
+            $table->string('CATEGORY_MENU', 50);
             $table->timestamps();
 
+            $table->foreign('CURTNER_ID')->references('CURTNER_ID')->on('CURTNERS');
             /*
               PIC = CURTNER
             */

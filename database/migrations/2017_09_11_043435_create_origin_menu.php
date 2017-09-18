@@ -13,18 +13,22 @@ class CreateOriginMenu extends Migration
      */
     public function up()
     {
-        Schema::create('ORIGINMENU', function (Blueprint $table) {
-            $table->increments('ID');
+        Schema::create('ORIGINMENUS', function (Blueprint $table) {
+            $table->string('ORIGIN_ID')->primary();
 
             //foreign
-            $table->integer('CURTNER_ID');
+            $table->string('CURTNER_ID');
 
             //content
-            $table->string('ORIGIN_CURTNER');
+            $table->string('ORIGIN_CURTNER', 50);
             $table->timestamps();
 
+            //constraint
+            $table->foreign('CURTNER_ID')->references('CURTNER_ID')->on('CURTNERS');
             /*
               PIC = CURTNER
+              seharusnya field curtner_id di tabel origin menu ga usah d cantumin
+              tp nnti gimana ambil data pic nya?
             */
         });
     }

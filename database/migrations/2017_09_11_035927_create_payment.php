@@ -13,7 +13,7 @@ class CreatePayment extends Migration
      */
     public function up()
     {
-        Schema::create('PAYMENTORDER', function (Blueprint $table) {
+        Schema::create('PAYMENTORDERS', function (Blueprint $table) {
             $table->increments('ID');
 
             //foreign
