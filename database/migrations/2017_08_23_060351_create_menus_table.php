@@ -23,7 +23,7 @@ class CreateMenusTable extends Migration
 
             //content
             $table->string('NAME_MENU', 150);
-            $table->long('PRICE_MENU');
+            $table->double('PRICE_MENU', 15, 2);
             $table->enum('STATUS_MENU', ['AVAILABLE', 'NOT AVAILABLE']); //available or not available
             $table->string('IMAGE_MENU')->nullable();
             $table->string('RAWMATERIAL_MENU', 100); //bahan dasar

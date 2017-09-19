@@ -17,7 +17,7 @@ class CreateCurtnersTable extends Migration
             $table->string('CURTNER_ID')->primary();
 
             //foreign
-            $table->string('ORIGIN_ID')->nullable();
+            //$table->string('ORIGIN_ID')->nullable();
             $table->string('ADMIN_ID');
 
             //content
@@ -32,8 +32,8 @@ class CreateCurtnersTable extends Migration
             $table->timestamps();
 
             //constraint
+            //$table->foreign('ORIGIN_ID')->references('ORIGIN_ID')->on('ORIGINMENUS');
             $table->foreign('ADMIN_ID')->references('ADMIN_ID')->on('ADMINS');
-            $table->foreign('ORIGIN_ID')->references('ORIGIN_ID')->on('ORIGINMENUS');
             /*
               PIC = ADMIN
             */
