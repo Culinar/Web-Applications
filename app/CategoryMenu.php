@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Menu extends Authenticatable
+class CategoryMenu extends Authenticatable
 {
     use Notifiable;
     public $table = "menus";
@@ -15,8 +15,7 @@ class Menu extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'CURTNER_ID', 'CATEGORY_MENU_ID', 'ORIGIN_ID', 'NAME_MENU', 'PRICE_MENU',
-        'STATUS_MENU', 'IMAGE_MENU', 'RAWMATERIAL_MENU', 'DESC_MENU'
+        'CURTNER_ID', 'CATEGORY_MENU'
     ];
 
     /**
@@ -28,12 +27,7 @@ class Menu extends Authenticatable
      public function curtners(){
        return $this->belongsTo('App\Curtner');
      }
-
-     public function categorymenus(){
-       return $this->hasMany('App\CategoryMenu');
-     }
-
-     public function originmenus(){
-       return $this->belongsToMany('App\OriginMenu');
+     public function menus(){
+       return $this->belongsTo('App\Menu');
      }
 }

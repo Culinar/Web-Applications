@@ -12,17 +12,19 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-/*$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Admin::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'ADMIN_ID' => $faker->swiftBicNumber(),
+        'NAME' => $faker->name(),
+        'EMAIL' => $faker->safeEmail(),
+        'JOB_TITLE' => $faker->jobTitle(),
+        'PASSWORD' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
-});*/
-
+});
+/*
 $factory->define(App\Menu::class, function (Faker\Generator $faker) {
     return [
         'curtner_id' => App\Curtner::all()->random()->id,
@@ -32,3 +34,4 @@ $factory->define(App\Menu::class, function (Faker\Generator $faker) {
         'price' => $faker->numberBetween(5000, 1000000),
     ];
 });
+*/

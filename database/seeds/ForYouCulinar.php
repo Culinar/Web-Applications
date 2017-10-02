@@ -11,6 +11,6 @@ class ForYouCulinar extends Seeder
      */
     public function run()
     {
-        factory(App\Menu::class, 50)->create();
+        factory(App\Admin::class, 10)->create();
     }
 }

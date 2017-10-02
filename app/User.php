@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'gender', 'phone_number', 'address', 'tag_address'
+        'ADMIN_ID','NAME_CUST', 'EMAIL_CUST', 'PASSWD_CUST', 'GENDER_CUST', 'PHONENUMB_CUST', 'ADDRESS_CUST', 'ADDRESS_TAG_CUST', 'IMAGE_CUST'
     ];
 
     /**
@@ -24,10 +24,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'PASSWD_CUST', 'remember_token',
     ];
 
-    public function orders(){
-      return $this->hasMany(Order::class);
+    public function admins(){
+      return $this->belongsTo('App\Admin');
+    }
+
+    public function coordinates(){
+      return $this->hasMany('App\Coordinate');
     }
 }
